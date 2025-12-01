@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { projects } from "@/lib/projects-data"
 import { Button } from "@/components/ui/button"
@@ -22,8 +21,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
-      <Header />
-      <main className="pt-[73px]">
+      <main>
         {/* Hero Image */}
         <section className="relative h-[50vh] min-h-[400px]">
           <img src={project.image || "/placeholder.svg"} alt={project.title} className="w-full h-full object-cover" />

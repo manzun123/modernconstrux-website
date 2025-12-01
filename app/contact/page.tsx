@@ -4,7 +4,6 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -70,8 +69,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Header />
-      <main className="pt-[73px]">
+      <main>
         {/* Hero Section */}
         <section className="bg-primary py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">

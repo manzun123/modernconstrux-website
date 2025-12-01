@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ScrollAnimate, StaggerContainer } from "@/components/scroll-animate"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Footer } from "@/components/footer"
 import {
   Home,
   DollarSign,
@@ -436,6 +437,16 @@ export default function ADUGuidePage() {
           </ScrollAnimate>
         </div>
       </section>
+
+      {/* Legal Disclaimer */}
+      <section className="py-12 bg-muted/50">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <p className="text-xs text-muted-foreground leading-relaxed text-center">
+            Disclaimer: The information on this page is for general guidance only and may not reflect the most current California or local ADU regulations. Zoning rules, setback requirements, utility rules, and permit processes can change. Always confirm requirements with your local city or county building department and consult with a licensed design professional before starting any project. Modern Construx is not liable for decisions made based solely on this information.
+          </p>
+        </div>
+      </section>
+      <Footer />
     </main>
   )
 }

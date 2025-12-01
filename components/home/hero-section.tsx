@@ -11,10 +11,25 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/modern-luxury-home-construction-site-san-diego-aer.jpg"
-          alt="Modern construction project"
+          src="/kitchen-detail-marble-backsplash-custom-cabinetry.jpg"
+          alt="Modern kitchen remodel with custom cabinetry in San Diego"
           className="w-full h-full object-cover"
         />
+
+        {/*
+          TODO: When we have a kitchen video, we can replace the Image with:
+
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
+          >
+            <source src="/videos/kitchen-hero.mp4" type="video/mp4" />
+          </video>
+        */}
+
         <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
       </div>
 
@@ -29,7 +44,7 @@ export function HeroSection() {
 
           <ScrollAnimate variant="fade-up" delay={100}>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight tracking-tight text-balance">
-              The Future of Building is Here
+              Modern Living Spaces, Built Right
             </h1>
           </ScrollAnimate>
 

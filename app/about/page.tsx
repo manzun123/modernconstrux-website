@@ -6,7 +6,9 @@ import { ScrollAnimate, StaggerContainer } from "@/components/scroll-animate"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Award, Shield, Users, Clock, Mail, Phone } from "lucide-react"
+import { Footer } from "@/components/footer"
 
+// TODO: Later, add real updated team photos and optional contact methods (no direct emails).
 const teamMembers = [
   {
     name: "Marcella Zuniga",
@@ -192,29 +194,11 @@ export default function AboutPage() {
                 variant={index === 0 ? "rotate-in" : index === 1 ? "flip-up" : "slide-reveal"}
                 delay={index * 150}
               >
-                <Card className="overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative aspect-square overflow-hidden">
-                    <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                <Card className="group hover:shadow-xl transition-shadow duration-300">
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-foreground">{member.name}</h3>
-                    <p className="text-accent font-medium text-sm">{member.role}</p>
-                    <p className="mt-3 text-muted-foreground text-sm">{member.bio}</p>
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
-                      >
-                        <Mail className="w-4 h-4" />
-                        {member.email}
-                      </a>
-                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">{member.name}</h3>
+                    <p className="text-accent font-medium text-sm mb-3">{member.role}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
                   </CardContent>
                 </Card>
               </ScrollAnimate>
@@ -254,6 +238,7 @@ export default function AboutPage() {
           </ScrollAnimate>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

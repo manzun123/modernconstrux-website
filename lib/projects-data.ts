@@ -5,7 +5,7 @@ export interface Project {
   longDescription: string
   location: string
   tags: string[]
-  category: "adu" | "remodel" | "commercial"
+  category: "adu" | "remodel"
   image: string
   gallery: string[]
   completionDate: string
@@ -58,24 +58,24 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    title: "Downtown Office Build-Out",
+    title: "University Heights Home Addition",
     description:
-      "Modern 5,000 sq ft office space with open floor plan, private offices, and state-of-the-art conference rooms.",
+      "1,200 sq ft home addition featuring modern design with open floor plan, additional bedroom, and expanded living space.",
     longDescription:
-      "This downtown San Diego tenant improvement project created a modern, collaborative workspace for a growing tech company. The design features an open floor plan with dedicated zones for focused work, collaboration spaces, and a stunning reception area. Private offices and conference rooms are equipped with the latest AV technology and acoustic treatments.",
-    location: "Downtown San Diego",
-    tags: ["Commercial", "Tenant Improvement", "Office"],
-    category: "commercial",
-    image: "/modern-office-space-downtown-san-diego-commercial-.jpg",
+      "This University Heights home addition project expanded a family home with a modern 1,200 sq ft addition. The design seamlessly integrates with the existing home, featuring an open floor plan with additional bedroom and bathroom. Modern materials and smart home technology complete this thoughtful expansion that increased both living space and property value.",
+    location: "University Heights, San Diego",
+    tags: ["Addition", "New Construction", "Modern"],
+    category: "remodel",
+    image: "/placeholder.svg",
     gallery: [
-      "/modern-office-reception-area-contemporary-design.jpg",
+      "/luxury-modern-white-kitchen-remodel-marble-counter.jpg",
       "/placeholder.svg?height=600&width=800",
       "/placeholder.svg?height=600&width=800",
       "/placeholder.svg?height=600&width=800",
     ],
     completionDate: "February 2024",
     duration: "4 months",
-    squareFeet: "5,000",
+    squareFeet: "1,200",
   },
   {
     id: "4",
@@ -119,22 +119,22 @@ export const projects: Project[] = [
   },
   {
     id: "6",
-    title: "Mission Valley Restaurant Build-Out",
-    description: "Full restaurant build-out including commercial kitchen, dining area, and outdoor patio space.",
+    title: "Carmel Valley Luxury Kitchen",
+    description: "Complete kitchen renovation with custom cabinetry, premium appliances, and designer finishes.",
     longDescription:
-      "This Mission Valley commercial project transformed a raw shell into a fully operational upscale restaurant. The scope included a complete commercial kitchen with all required equipment, an elegant dining room with custom millwork, a full bar, and an outdoor patio with shade structures. All work was completed to code with full ADA compliance.",
-    location: "Mission Valley, San Diego",
-    tags: ["Commercial", "Restaurant", "New Construction"],
-    category: "commercial",
-    image: "/placeholder.svg?height=600&width=800",
+      "This Carmel Valley kitchen renovation transformed a dated space into a culinary masterpiece. The project featured custom maple cabinetry with soft-close drawers, granite countertops, a large island with seating, and top-of-the-line appliances. The design incorporated ample storage solutions and created a welcoming space for family gatherings and entertaining.",
+    location: "Carmel Valley, San Diego",
+    tags: ["Remodel", "Kitchen", "Luxury"],
+    category: "remodel",
+    image: "/luxury-kitchen-remodel-modern-white-marble-san-die.jpg",
     gallery: [
-      "/placeholder.svg?height=600&width=800",
+      "/kitchen-island-professional-appliances.jpg",
       "/placeholder.svg?height=600&width=800",
       "/placeholder.svg?height=600&width=800",
       "/placeholder.svg?height=600&width=800",
     ],
     completionDate: "October 2023",
-    duration: "5 months",
-    squareFeet: "3,500",
+    duration: "3 months",
+    squareFeet: "400",
   },
 ]

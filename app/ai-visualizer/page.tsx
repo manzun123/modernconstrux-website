@@ -2,7 +2,6 @@
 
 import type React from "react"
 import { useState, useCallback } from "react"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -114,8 +113,7 @@ export default function AIVisualizerPage() {
 
   return (
     <>
-      <Header />
-      <main className="pt-[73px]">
+      <main>
         {/* Hero Section */}
         <section className="bg-primary py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">

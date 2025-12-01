@@ -1,4 +1,3 @@
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { HeroSection } from "@/components/home/hero-section"
 import { StatsSection } from "@/components/home/stats-section"
@@ -10,15 +9,12 @@ import { CTASection } from "@/components/home/cta-section"
 export default function HomePage() {
   return (
     <>
-      <Header />
-      <main className="pt-[73px]">
-        <HeroSection />
-        <StatsSection />
-        <ServicesSection />
-        <FeaturedProjects />
-        <TestimonialsSection />
-        <CTASection />
-      </main>
+      <HeroSection />
+      <StatsSection />
+      <ServicesSection />
+      <FeaturedProjects />
+      <TestimonialsSection />
+      <CTASection />
       <Footer />
     </>
   )

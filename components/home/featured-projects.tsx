@@ -22,10 +22,10 @@ const featuredProjects = [
   },
   {
     id: "3",
-    title: "Downtown Office Build-Out",
-    location: "Downtown San Diego",
-    image: "/modern-office-space-interior-downtown-san-diego-co.jpg",
-    tags: ["Commercial", "Tenant Improvement"],
+    title: "Pacific Beach ADU Extension",
+    location: "Pacific Beach, San Diego",
+    image: "/modern-adu-small-house-pacific-beach-san-diego-ext.jpg",
+    tags: ["ADU", "New Construction"],
   },
 ]
 

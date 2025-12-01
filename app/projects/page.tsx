@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { projects } from "@/lib/projects-data"
 import { MapPin, ArrowRight } from "lucide-react"
@@ -8,8 +7,7 @@ import { Button } from "@/components/ui/button"
 export default function ProjectsPage() {
   return (
     <>
-      <Header />
-      <main className="pt-[73px]">
+      <main>
         {/* Hero Section */}
         <section className="bg-primary py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
