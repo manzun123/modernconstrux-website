@@ -36,7 +36,7 @@ const aduTypes = [
     title: "Garage Conversion",
     description: "Converting an existing garage into a livable dwelling unit.",
     maxSize: "Varies by existing structure",
-    image: "/adu-guide/garage-conversion.jpg",
+    image: "/attachedGCon.png",
   },
   {
     title: "Junior ADU (JADU)",
@@ -165,6 +165,18 @@ export default function ADUGuidePage() {
         <div className="absolute inset-0 opacity-10">
           <Image src="/adu-guide/adu-hero.jpg" alt="Modern ADU in San Diego" fill className="object-cover" />
         </div>
+        
+        {/* Brand Logo Overlay - Top Right */}
+        <div className="absolute top-6 right-6 lg:top-10 lg:right-10 z-20">
+          <Image
+            src="/no background logo.png"
+            alt="Modern Construx"
+            width={160}
+            height={160}
+            className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 object-contain brightness-0 invert opacity-75"
+          />
+        </div>
+        
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <ScrollAnimate variant="zoom-fade">
             <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-6">

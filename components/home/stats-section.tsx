@@ -10,7 +10,7 @@ const stats = [
     icon: CheckCircle,
   },
   {
-    value: "15+",
+    value: "50+",
     label: "Years Experience",
     icon: Calendar,
   },
@@ -28,7 +28,7 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="bg-secondary py-12 border-y border-border">
+    <section className="bg-secondary py-16 border-y border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={100} variant="fade-up">
           {stats.map((stat) => (

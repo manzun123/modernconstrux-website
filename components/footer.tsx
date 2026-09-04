@@ -125,6 +125,19 @@ export function Footer() {
               </p>
               <p className="text-sm text-primary-foreground/60">CA Contractor License #1103813</p>
             </div>
+            
+            {/* Large Brand Logo - Bottom Center */}
+            <div className="mt-12 flex justify-center">
+              <Link href="/" className="block">
+                <Image
+                  src="/no background logo.png"
+                  alt="Modern Construx"
+                  width={280}
+                  height={280}
+                  className="w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 object-contain brightness-0 invert"
+                />
+              </Link>
+            </div>
           </div>
         </ScrollAnimate>
       </div>

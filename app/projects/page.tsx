@@ -1,89 +1,103 @@
+"use client"
+
 import Link from "next/link"
+import Image from "next/image"
+import { useState, useRef, useCallback } from "react"
 import { Footer } from "@/components/footer"
-import { projects } from "@/lib/projects-data"
-import { MapPin, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+// Gallery images - mix of local and high-quality Unsplash images
+const galleryImages = [
+  // Unsplash - Modern kitchen remodel
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=90",
+  // Local images
+  "/luxury-modern-white-kitchen-remodel-marble-counter.jpg",
+  "/luxury-kitchen-white-cabinets-calacatta-marble-isl.jpg",
+  "/kitchen-island-professional-wolf-appliances-modern.jpg",
+  "/luxury-kitchen-remodel-modern-white-marble-san-die.jpg",
+  "/adu-modern-living-room-interior-bright-natural-lig.jpg",
+  "/kitchen-dining-area-open-floor-plan-luxury-home.jpg",
+  "/small-modern-kitchen-white-cabinets-quartz-counter.jpg",
+  "/adu-bedroom-large-windows-natural-light-modern-min.jpg",
+  "/modern-adu-exterior-backyard-san-diego-clean-desig.jpg",
+]
+
+function ZoomGalleryImage({ image }: { image: string }) {
+  const [isZoomed, setIsZoomed] = useState(false)
+  const [position, setPosition] = useState({ x: 50, y: 50 })
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    setPosition({ x, y })
+  }, [])
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative overflow-hidden rounded-lg aspect-[4/3] cursor-zoom-in"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsZoomed(true)}
+      onMouseLeave={() => { setIsZoomed(false); setPosition({ x: 50, y: 50 }); }}
+    >
+      <img
+        src={image}
+        alt="Project showcase"
+        className="w-full h-full object-cover transition-transform duration-300 ease-out will-change-transform"
+        style={{
+          transform: isZoomed ? "scale(1.5)" : "scale(1)",
+          transformOrigin: `${position.x}% ${position.y}%`,
+        }}
+      />
+    </div>
+  )
+}
 
 export default function ProjectsPage() {
   return (
     <>
       <main>
         {/* Hero Section */}
-        <section className="bg-primary py-20">
+        <section className="relative bg-primary py-24">
+          {/* Brand Logo Overlay - Top Right */}
+          <div className="absolute top-6 right-6 lg:top-10 lg:right-10 z-20">
+            <Image
+              src="/no background logo.png"
+              alt="Modern Construx"
+              width={160}
+              height={160}
+              className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 object-contain brightness-0 invert opacity-75"
+            />
+          </div>
+          
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="max-w-2xl">
               <p className="text-accent font-medium mb-2 uppercase tracking-wide text-sm">Our Portfolio</p>
-              <h1 className="text-4xl sm:text-5xl font-bold text-primary-foreground tracking-tight">Our Projects</h1>
+              <h1 className="text-4xl sm:text-5xl font-bold text-primary-foreground tracking-tight">Our Work</h1>
               <p className="mt-4 text-lg text-primary-foreground/80 leading-relaxed">
-                Explore our portfolio of completed projects across San Diego. From custom ADUs to luxury remodels and
-                commercial build-outs, see the quality craftsmanship we bring to every project.
+                Browse our collection of completed projects across San Diego. Quality craftsmanship you can see.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Projects Grid */}
-        <section className="py-20 bg-background">
+        {/* Large Scrolling Image Gallery */}
+        <section className="py-16 bg-background">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 mb-12">
-              <Button variant="secondary" size="sm" className="font-medium">
-                All Projects
-              </Button>
-              <Button variant="ghost" size="sm" className="font-medium text-muted-foreground">
-                ADUs
-              </Button>
-              <Button variant="ghost" size="sm" className="font-medium text-muted-foreground">
-                Remodels
-              </Button>
-              <Button variant="ghost" size="sm" className="font-medium text-muted-foreground">
-                Commercial
-              </Button>
-            </div>
-
-            {/* Projects Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <Link key={project.id} href={`/projects/${project.id}`} className="group">
-                  <article className="h-full">
-                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] mb-4">
-                      <img
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        {project.tags.slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-1 bg-accent text-accent-foreground text-xs font-medium rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors flex items-center gap-2">
-                        {project.title}
-                        <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                      </h2>
-                      <p className="flex items-center gap-1 text-sm text-muted-foreground mt-1 mb-2">
-                        <MapPin className="w-3 h-3" />
-                        {project.location}
-                      </p>
-                      <p className="text-muted-foreground text-sm line-clamp-2">{project.description}</p>
-                    </div>
-                  </article>
-                </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {galleryImages.map((image, index) => (
+                <ZoomGalleryImage key={index} image={image} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-muted">
+        {/* CTA Section - At Bottom */}
+        <section className="py-20 bg-background">
           <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Ready to Start Your Project?</h2>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">

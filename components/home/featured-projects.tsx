@@ -31,7 +31,7 @@ const featuredProjects = [
 
 export function FeaturedProjects() {
   return (
-    <section className="py-24 bg-muted">
+    <section className="py-32 bg-muted">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">

@@ -1,97 +1,90 @@
 "use client"
 
-import Link from "next/link"
-import { Home, Building2, Hammer, Store, ArrowRight } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { ScrollAnimate, StaggerContainer } from "@/components/scroll-animate"
+import Image from "next/image"
+import { ScrollAnimate } from "@/components/scroll-animate"
 
 const services = [
   {
+    title: "New Construction",
+    description: "Ground-up custom home building with modern design, quality materials, and expert craftsmanship.",
+    image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1920&q=95",
+  },
+  {
     title: "ADU Construction",
     description: "Custom accessory dwelling units designed to maximize your property's potential and value.",
-    icon: Home,
-    image: "/modern-adu-accessory-dwelling-unit-san-diego-backy.jpg",
-    href: "/projects?filter=adu",
+    image: "/attachedGCon.png",
   },
   {
     title: "Full Remodels",
     description: "Complete home transformations from kitchens and bathrooms to whole-house renovations.",
-    icon: Hammer,
-    image: "/luxury-kitchen-remodel-modern-white-marble-san-die.jpg",
-    href: "/projects?filter=remodel",
+    image: "/Beforeandafterremodel.png",
   },
   {
     title: "Bathroom Remodels",
     description: "Luxury bathroom transformations with modern fixtures, custom vanities, and spa-like finishes.",
-    icon: Building2,
-    image: "/luxury-white-kitchen-remodel-la-jolla-modern.jpg",
-    href: "/projects?filter=remodel",
-  },
-  {
-    title: "Home Additions",
-    description: "Expand your living space with custom home additions and structural modifications.",
-    icon: Store,
-    href: "/projects?filter=remodel",
+    image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1920&q=95",
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section className="py-24 bg-background">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="bg-background py-4">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
+        <div className="mb-6 text-center">
           <ScrollAnimate variant="fade-up">
             <p className="text-accent font-medium mb-2 uppercase tracking-wide text-sm">What We Do</p>
           </ScrollAnimate>
           <ScrollAnimate variant="fade-up" delay={100}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Our Services</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground tracking-tight">Our Services</h2>
           </ScrollAnimate>
           <ScrollAnimate variant="fade-up" delay={200}>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
               From residential remodels to commercial build-outs, we deliver quality construction services across San
               Diego County.
             </p>
           </ScrollAnimate>
         </div>
 
-        {/* Services Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={150} variant="fade-up">
-          {services.map((service) => (
-            <Link key={service.title} href={service.href} className="group">
-              <Card className="border-border hover:border-accent/50 transition-colors h-full">
-                {service.image ? (
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <div className="w-10 h-10 rounded-sm bg-accent flex items-center justify-center">
-                        <service.icon className="w-5 h-5 text-accent-foreground" />
-                      </div>
+        {/* Editorial Service Cards - Text Offset at Top Corner */}
+        <div className="space-y-12 lg:space-y-16">
+          {services.map((service, index) => {
+            const isEven = index % 2 === 0
+            return (
+              <ScrollAnimate key={service.title} variant="fade-up">
+                <div className="relative">
+                  {/* Image - Static (no zoom) */}
+                  <div className={`lg:w-[68%] ${isEven ? 'lg:ml-auto' : 'lg:mr-auto'}`}>
+                    <div className="relative aspect-[16/8] lg:aspect-[21/8] rounded-2xl overflow-hidden shadow-2xl">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                        quality={95}
+                        sizes="(max-width: 1024px) 100vw, 75vw"
+                        priority={index === 0}
+                      />
                     </div>
                   </div>
-                ) : (
-                  <div className="p-6 pb-0">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                      <service.icon className="w-6 h-6 text-accent" />
+
+                  {/* Text Content - Offset at Top Corner */}
+                  <div className={`mt-6 lg:mt-0 lg:absolute lg:top-0 lg:w-[32%] lg:-translate-y-16 ${isEven ? 'lg:-left-6' : 'lg:-right-6'}`}>
+                    <div className="bg-background/95 backdrop-blur-sm p-6 lg:p-8 rounded-xl lg:shadow-lg space-y-4">
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight leading-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                      <div className="h-1 w-16 bg-accent" />
                     </div>
                   </div>
-                )}
-                <CardContent className={service.image ? "p-6" : "px-6 pb-6"}>
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors flex items-center gap-2">
-                    {service.title}
-                    <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">{service.description}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </StaggerContainer>
+                </div>
+              </ScrollAnimate>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

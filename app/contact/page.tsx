@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -30,6 +31,10 @@ export default function ContactPage() {
       address: formData.get("address") as string,
       projectType: formData.get("projectType") as string,
       message: formData.get("message") as string,
+      // Honeypot field for spam protection
+      website: formData.get("website") as string,
+      // Source tracking
+      source: "Contact Page",
     }
 
     // Basic validation
@@ -55,13 +60,19 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       })
 
-      if (response.ok) {
+      const result = await response.json()
+      
+      if (result.ok) {
         setIsSubmitted(true)
+      } else if (response.status === 429) {
+        setErrors({ form: "Too many requests. Please wait a moment and try again." })
+      } else if (response.status === 400) {
+        setErrors({ form: result.details?.join(", ") || "Please check your input and try again." })
       } else {
-        throw new Error("Submission failed")
+        setErrors({ form: result.error || "Something went wrong. Please try again or call us directly at (858) 744-0521." })
       }
     } catch {
-      setErrors({ form: "Something went wrong. Please try again." })
+      setErrors({ form: "Something went wrong. Please try again or call us directly at (858) 744-0521." })
     } finally {
       setIsSubmitting(false)
     }
@@ -71,7 +82,18 @@ export default function ContactPage() {
     <>
       <main>
         {/* Hero Section */}
-        <section className="bg-primary py-20">
+        <section className="relative bg-primary py-20">
+          {/* Brand Logo Overlay - Top Right */}
+          <div className="absolute top-6 right-6 lg:top-10 lg:right-10 z-20">
+            <Image
+              src="/no background logo.png"
+              alt="Modern Construx"
+              width={160}
+              height={160}
+              className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 object-contain brightness-0 invert opacity-75"
+            />
+          </div>
+          
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="max-w-2xl">
               <ScrollAnimate variant="fade-up">
@@ -106,7 +128,7 @@ export default function ContactPage() {
                       </div>
                       <h2 className="text-2xl font-bold text-foreground mb-2">Thank You!</h2>
                       <p className="text-muted-foreground mb-6">
-                        We&apos;ve received your request and will get back to you within 24 hours.
+                        Your message has been sent. We will contact you shortly.
                       </p>
                       <Button asChild>
                         <Link href="/">Return Home</Link>
@@ -114,6 +136,18 @@ export default function ContactPage() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Honeypot field - hidden from real users, bots will fill it */}
+                      <div className="absolute -left-[9999px] opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+                        <label htmlFor="website">Website</label>
+                        <input
+                          type="text"
+                          id="website"
+                          name="website"
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                      </div>
+
                       {errors.form && (
                         <div className="bg-destructive/10 text-destructive px-4 py-3 rounded-lg text-sm">
                           {errors.form}

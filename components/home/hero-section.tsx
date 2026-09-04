@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { ScrollAnimate } from "@/components/scroll-animate"
@@ -33,6 +34,17 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
       </div>
 
+      {/* Brand Logo Overlay - Top Right */}
+      <div className="absolute top-24 right-6 lg:top-28 lg:right-10 z-20">
+        <Image
+          src="/no background logo.png"
+          alt="Modern Construx"
+          width={160}
+          height={160}
+          className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 object-contain brightness-0 invert opacity-75"
+        />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24">
         <div className="max-w-2xl">
@@ -44,7 +56,7 @@ export function HeroSection() {
 
           <ScrollAnimate variant="fade-up" delay={100}>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight tracking-tight text-balance">
-              Modern Living Spaces, Built Right
+              The Future of Building is Here.
             </h1>
           </ScrollAnimate>
 

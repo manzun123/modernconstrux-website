@@ -11,25 +11,46 @@ import { Footer } from "@/components/footer"
 // TODO: Later, add real updated team photos and optional contact methods (no direct emails).
 const teamMembers = [
   {
+    name: "Manuel Zuniga",
+    role: "Founder & Lead Project Manager",
+    bio: "Manuel brings hands-on leadership and deep field experience to every project. With a background rooted in construction operations and project execution, he founded Modern Construx to create a company built on accountability, quality, and transparency. Manuel is personally involved in project planning, scheduling, and client communication, ensuring every project is delivered with precision and professionalism. His leadership philosophy is simple: build it right, communicate clearly, and always stand behind the work.",
+    image: "/team/manuel-zuniga.jpg",
+    email: "manuel@modernconstrux.xyz",
+  },
+  {
+    name: "Frances Garcia",
+    role: "Project Manager",
+    bio: "Frances coordinates project timelines, manages logistics, and keeps each project running smoothly. With a focus on organization and attention to detail, she ensures homeowners, crews, and vendors stay aligned throughout the construction process.",
+    image: "/team/frances-garcia.jpg",
+    email: "frances@modernconstrux.xyz",
+  },
+  {
     name: "Marcella Zuniga",
     role: "Project Manager",
-    bio: "With over 10 years of experience in construction management, Marcella ensures every project is delivered on time and exceeds client expectations.",
+    bio: "With over 10 years of experience in construction management, Marcella ensures every project is delivered on time and exceeds client expectations. Her expertise in scheduling, budgeting, and client relations keeps projects moving forward efficiently.",
     image: "/team/marcella-zuniga.jpg",
     email: "marcella@modernconstrux.xyz",
   },
   {
-    name: "Santos Gill",
+    name: "Solomon Gill",
     role: "Superintendent",
-    bio: "Santos brings decades of hands-on construction expertise to every job site, ensuring quality craftsmanship and safety standards are always met.",
+    bio: "Santos brings decades of hands-on construction expertise to every job site. As superintendent, he oversees daily operations, coordinates crews, and ensures quality craftsmanship and safety standards are always met on every project.",
     image: "/team/santos-gill.jpg",
     email: "santos@modernconstrux.xyz",
   },
   {
     name: "Vince Orengo",
     role: "Project Manager",
-    bio: "A seasoned veteran with 25+ years in the industry, Vince specializes in complex remodels and commercial tenant improvements.",
+    bio: "A seasoned veteran with 25+ years in the industry, Vince specializes in complex remodels and commercial tenant improvements. His deep technical knowledge and problem-solving skills make him invaluable on challenging projects.",
     image: "/team/vince-orengo.jpg",
     email: "vince@modernconstrux.xyz",
+  },
+  {
+    name: "Miguel Farias",
+    role: "Project Manager",
+    bio: "Miguel brings strong field coordination and client communication skills to every project. With extensive knowledge and experience in drywall, finishing, and paint work, he ensures every surface meets the highest quality standards from start to finish.",
+    image: "/team/miguel-farias.jpg",
+    email: "miguel@modernconstrux.xyz",
   },
 ]
 
@@ -70,6 +91,18 @@ export default function AboutPage() {
             className="object-cover"
           />
         </div>
+        
+        {/* Brand Logo Overlay - Top Right */}
+        <div className="absolute top-6 right-6 lg:top-10 lg:right-10 z-20">
+          <Image
+            src="/no background logo.png"
+            alt="Modern Construx"
+            width={160}
+            height={160}
+            className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 object-contain brightness-0 invert opacity-75"
+          />
+        </div>
+        
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <ScrollAnimate variant="zoom-fade">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance max-w-4xl">
@@ -77,9 +110,8 @@ export default function AboutPage() {
             </h1>
           </ScrollAnimate>
           <ScrollAnimate variant="fade-up" delay={200}>
-            <p className="mt-6 text-xl text-primary-foreground/80 max-w-2xl">
-              Modern Construx is a full-service general contractor dedicated to transforming spaces and exceeding
-              expectations throughout San Diego County.
+            <p className="mt-6 text-xl text-primary-foreground/80 max-w-3xl">
+              Modern Construx is a full-service general contractor serving San Diego County and the surrounding Southern California region. We specialize in residential construction, ADU development, full home remodels, and commercial improvements. Our focus is simple: deliver high-quality projects, clear communication, and dependable results from start to finish.
             </p>
           </ScrollAnimate>
           <ScrollAnimate variant="bounce-in" delay={400}>
@@ -97,32 +129,75 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Contractors Image & Positioning Copy Section */}
+      <section className="bg-secondary/30 pt-10 lg:pt-14 pb-32 lg:pb-48">
+        {/* Safety Banner */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-accent">0</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Jobsite Accidents</div>
+            </div>
+            <div className="hidden md:block w-px h-12 bg-border" />
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-accent">OSHA 10</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Certified Team</div>
+            </div>
+            <div className="hidden md:block w-px h-12 bg-border" />
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-accent">OSHA 30</div>
+              <div className="text-xs md:text-sm text-muted-foreground mt-1">Certified Team</div>
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Text Content */}
+            <ScrollAnimate variant="fade-right">
+              <div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8">Designers and Builders — The Best of Both Worlds</h2>
+                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                  At Modern Construx, we combine strong leadership, skilled in-house crews, and disciplined project management to execute projects efficiently and professionally. Our team brings together more than 50 years of experience in the construction industry, allowing us to handle everything from complex structural work to high-end finishes with confidence and precision. Every project is approached with careful planning, transparent communication, and accountability at every stage.
+                </p>
+              </div>
+            </ScrollAnimate>
+            {/* Image - Natural fit showing full content */}
+            <ScrollAnimate variant="fade-left">
+              <div className="relative aspect-[3/4] lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/santosky.jpg" 
+                  alt="Two professionals reviewing construction plans on a jobsite" 
+                  fill 
+                  className="object-cover object-top"
+                  quality={95}
+                />
+              </div>
+            </ScrollAnimate>
+          </div>
+        </div>
+      </section>
+
       {/* Our Story Section */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollAnimate variant="slide-reveal">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <Image src="/about/team-working-on-site.jpg" alt="Our team at work" fill className="object-cover" />
+                <Image src="/2metalframing.jpg" alt="Our construction team at work on a commercial framing project" fill className="object-cover" />
               </div>
             </ScrollAnimate>
             <div>
               <ScrollAnimate variant="fade-right">
-                <span className="text-accent font-semibold text-sm uppercase tracking-wider">Our Story</span>
-                <h2 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">The Future of Building is Here</h2>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8">Our Story</h2>
               </ScrollAnimate>
               <ScrollAnimate variant="fade-up" delay={150}>
-                <p className="mt-6 text-muted-foreground leading-relaxed">
-                  Founded with a vision to revolutionize construction in San Diego, Modern Construx combines
-                  cutting-edge technology with time-tested craftsmanship. We specialize in ADUs, full home remodels, and
-                  commercial tenant improvements.
+                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                  Modern Construx was founded with a vision to raise the standard of construction in San Diego. We saw an industry filled with shortcuts, miscommunication, and uncertainty for homeowners and property owners, and we built our company around doing the opposite.
                 </p>
               </ScrollAnimate>
               <ScrollAnimate variant="fade-up" delay={300}>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  Our team brings together decades of combined experience with a fresh, innovative approach. From
-                  AI-powered design visualization to sustainable building practices, we&apos;re not just building
-                  structures - we&apos;re building the future.
+                <p className="mt-4 text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                  We combine time-tested craftsmanship with modern technology, including AI-powered design visualization and advanced project coordination tools, to give clients a smoother, more predictable building experience. From ADUs and major remodels to commercial tenant improvements, our mission is not just to build structures, but to build long-term trust through quality work and professional execution.
                 </p>
               </ScrollAnimate>
               <ScrollAnimate variant="bounce-in" delay={450}>
@@ -132,7 +207,7 @@ export default function AboutPage() {
                     <div className="text-sm text-muted-foreground">Projects Completed</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-accent">15+</div>
+                    <div className="text-3xl font-bold text-accent">50+</div>
                     <div className="text-sm text-muted-foreground">Years Experience</div>
                   </div>
                   <div>

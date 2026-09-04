@@ -7,7 +7,7 @@ import { ScrollAnimate } from "@/components/scroll-animate"
 
 export function CTASection() {
   return (
-    <section className="py-24 bg-primary">
+    <section className="py-32 bg-primary">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
