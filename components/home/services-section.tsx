@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { ScrollAnimate } from "@/components/scroll-animate"
 
-const services = [
+const services: { title: string; description: string; image: string; alt?: string }[] = [
   {
     title: "New Construction",
     description: "Ground-up custom home building with modern design, quality materials, and expert craftsmanship.",
@@ -17,7 +17,8 @@ const services = [
   {
     title: "Full Remodels",
     description: "Complete home transformations from kitchens and bathrooms to whole-house renovations.",
-    image: "/Beforeandafterremodel.png",
+    image: "/full-remodels.webp",
+    alt: "Modern open-concept home remodel featuring a contemporary kitchen and living room | Modern Construx",
   },
   {
     title: "Bathroom Remodels",
@@ -58,9 +59,9 @@ export function ServicesSection() {
                     <div className="relative aspect-[16/8] lg:aspect-[21/8] rounded-2xl overflow-hidden shadow-2xl">
                       <Image
                         src={service.image}
-                        alt={service.title}
+                        alt={service.alt ?? service.title}
                         fill
-                        className="object-cover"
+                        className="object-cover object-center"
                         quality={95}
                         sizes="(max-width: 1024px) 100vw, 75vw"
                         priority={index === 0}
